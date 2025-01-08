@@ -1,0 +1,47 @@
+<form action="/sign-up" method="POST">
+  <input
+    type="text"
+    placeholder="first name"
+    name="first_name"
+    value="<%= value.first_name %>"
+  />
+  <input
+    type="text"
+    placeholder="last name"
+    name="last_name"
+    value="<%= value.last_name %>"
+  />
+  <input
+    type="text"
+    placeholder="username"
+    name="username"
+    required
+    value="<%= value.username %>"
+  />
+  <input
+    type="email"
+    placeholder="email"
+    name="email"
+    value="<%= value.email %>"
+  />
+  <input
+    type="password"
+    placeholder="password"
+    name="password"
+    value="<%= value.password %>"
+  />
+  <input
+    type="text"
+    placeholder="member code"
+    name="member_code"
+    value="<%= value.member_code %>"
+  />
+  <input
+    type="text"
+    placeholder="admin code"
+    name="admin_code"
+    value="<%= value.admin_code %>"
+  />
+  <button type="submit">Sing-Up</button>
+  <%- include("./partials/errors.ejs") %>
+</form>
