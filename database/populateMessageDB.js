@@ -4,18 +4,18 @@ const pool = require("./pool");
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    username VARCHAR(255) NOT NULL,
     title VARCHAR(100) NOT NULL,
     message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO messages (user_id, title, message) VALUES
-(1, 'Welcome to the forum', 'This is my first message here. Excited to join the community!'),
-(2, 'Question about membership', 'How do I become a premium member?'),
-(3, 'Feature Request', 'It would be great to have a dark mode feature.'),
-(1, 'Hello World', 'Just testing the messaging feature!'),
-(4, 'Admin Announcement', 'Please make sure to read the guidelines before posting.');
+INSERT INTO messages (username, title, message) VALUES
+('JohnDoe', 'Welcome to the forum', 'This is my first message here. Excited to join the community!'),
+('JaneSmith', 'Question about membership', 'How do I become a premium member?'),
+('BobBrown', 'Feature Request', 'It would be great to have a dark mode feature.'),
+('JohnDoe', 'Hello World', 'Just testing the messaging feature!'),
+('AdminUser', 'Admin Announcement', 'Please make sure to read the guidelines before posting.');
   `;
 
 async function main() {
