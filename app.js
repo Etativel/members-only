@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", signUpRouter);
 
 app.get("/", (req, res) => {
-  res.send("home");
+  res.render("index");
 });
 
 const PORT = 3000;

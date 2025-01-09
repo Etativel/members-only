@@ -19,11 +19,16 @@ async function signUpForm(req, res) {
   });
 }
 
+async function isEmailUsed(email) {
+  const queryEmail = await db.getEmail(email);
+  return queryEmail.length >= 1;
+}
+
 async function isUsernameTaken(username) {
-  const usernames = await db.getAllUsername();
-  const listOfUsers = usernames.map((username) => username.username);
+  const usernames = await db.getUsername(username);
+  // const listOfUsers = usernames.map((username) => username.username);
   if (!username) return "Username cannot be empty";
-  return listOfUsers.includes(username.toLowerCase());
+  return usernames.length >= 1;
 }
 
 const alphaErr = "must only contain letters.";
@@ -41,6 +46,8 @@ const passwordSpecialCharErr =
 
 const memberErr = "must be the valid member code: 111.";
 const adminErr = "must be the valid admin code: 888.";
+
+const uniqueEmailErr = "email already used";
 
 const validateUser = [
   body("first_name")
@@ -69,7 +76,17 @@ const validateUser = [
       return true;
     }),
 
-  body("email").trim().isEmail().withMessage(emailErr),
+  body("email")
+    .trim()
+    .isEmail()
+    .withMessage(emailErr)
+    .custom(async (value) => {
+      const taken = await isEmailUsed(value);
+      if (taken) {
+        throw new Error(uniqueEmailErr);
+      }
+      return true;
+    }),
 
   body("password")
     .isLength({ min: 8 })

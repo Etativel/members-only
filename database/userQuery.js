@@ -1,5 +1,26 @@
 const pool = require("./pool");
 
+async function getEmail(email) {
+  const { rows } = await pool.query(
+    `
+      SELECT * FROM users WHERE email = $1
+    `,
+    [email]
+  );
+  return rows;
+}
+
+async function getUsername(username) {
+  const { rows } = await pool.query(
+    `
+      SELECT * FROM users WHERE username = $1
+    `,
+    [username]
+  );
+
+  return rows;
+}
+
 async function getAllUsername() {
   const { rows } = await pool.query(
     `
@@ -31,5 +52,7 @@ async function createUser(params) {
 
 module.exports = {
   getAllUsername,
+  getUsername,
+  getEmail,
   createUser,
 };
