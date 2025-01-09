@@ -6,7 +6,7 @@ const path = require("node:path");
 const assetPath = path.join(__dirname, "public");
 const signUpRouter = require("./routes/signUpRoute");
 const logInRouter = require("./routes/authRoute");
-
+const chatRouter = require("./routes/messageRoute");
 const session = require("./config/sessionConfig");
 
 session(app);
@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", signUpRouter);
 app.use("/", logInRouter);
+app.use("/", chatRouter);
 app.get("/", (req, res) => {
   res.render("index", { user: req.user });
 });
