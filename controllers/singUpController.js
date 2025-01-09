@@ -26,7 +26,6 @@ async function isEmailUsed(email) {
 
 async function isUsernameTaken(username) {
   const usernames = await db.getUsername(username);
-  // const listOfUsers = usernames.map((username) => username.username);
   if (!username) return "Username cannot be empty";
   return usernames.length >= 1;
 }
@@ -165,7 +164,7 @@ const usersCreatePost = [
       is_admin: isAdminValid,
     });
     console.log(member_code);
-    res.redirect("/");
+    res.render("index");
   },
 ];
 

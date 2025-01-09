@@ -2,6 +2,7 @@ body {
   display: flex;
   justify-content: center;
 }
+.log-in-form,
 .sign-up-form {
   display: flex;
   flex-direction: column;

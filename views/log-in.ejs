@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in</title>
+    <link rel="stylesheet" href="/signup-form.css" />
+  </head>
+  <body>
+    <form action="/log-in" method="POST" class="log-in-form">
+      <label for="username">Username</label>
+      <input
+        id="username"
+        type="text"
+        placeholder="Enter your username"
+        name="username"
+        required
+        value="<%= value.username %>"
+      />
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter your password"
+        name="password"
+        value="<%= value.password %>"
+      />
+      <button type="submit">Log-In</button>
+      <%- include("./partials/errors.ejs") %>
+    </form>
+  </body>
+</html>

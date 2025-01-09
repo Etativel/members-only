@@ -21,16 +21,7 @@ async function getUsername(username) {
   return rows;
 }
 
-async function getAllUsername() {
-  const { rows } = await pool.query(
-    `
-        SELECT username FROM users;
-    `
-  );
-  return rows;
-}
-
-// INSER USER
+// INSERT USER
 
 async function createUser(params) {
   await pool.query(
@@ -51,7 +42,6 @@ async function createUser(params) {
 }
 
 module.exports = {
-  getAllUsername,
   getUsername,
   getEmail,
   createUser,
