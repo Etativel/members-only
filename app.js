@@ -8,6 +8,7 @@ const signUpRouter = require("./routes/signUpRoute");
 const logInRouter = require("./routes/authRoute");
 const chatRouter = require("./routes/messageRoute");
 const session = require("./config/sessionConfig");
+const messageDb = require("./database/messagesQuery");
 
 session(app);
 
@@ -22,8 +23,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", signUpRouter);
 app.use("/", logInRouter);
 app.use("/", chatRouter);
-app.get("/", (req, res) => {
-  res.render("index", { user: req.user });
+app.get("/", async (req, res) => {
+  try {
+    const messages = await messageDb.getAllMessage();
+    res.render("index", { user: req.user, messages });
+  } catch (error) {
+    console.error("Error fetching messages:", error);
+    res.status(500).send("An error occurred while loading messages.");
+  }
 });
 
 const PORT = 3000;

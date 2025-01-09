@@ -1,5 +1,16 @@
 const pool = require("./pool");
 
+// GET MESSAGE
+
+async function getAllMessage() {
+  const { rows } = await pool.query(`
+            SELECT * FROM messages
+        
+        `);
+
+  return rows;
+}
+
 // INSERT MESSAGE
 
 async function insertMessageQuery(params) {
@@ -14,4 +25,5 @@ async function insertMessageQuery(params) {
 
 module.exports = {
   insertMessageQuery,
+  getAllMessage,
 };

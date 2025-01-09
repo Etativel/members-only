@@ -13,10 +13,11 @@
     <div class="chat-container">
       <div class="message-input-container">
         <div class="message-container">
-          <span>Anonymous: Hello</span>
-          <span>Anonymous: Yes</span>
+          <% messages.forEach(message => { %>
+          <span><%= message.username %>: <%= message.message %></span>
+          <% }) %>
         </div>
-        <form action="/sending-message" method="POST">
+        <form action="/" method="POST">
           <input
             type="text"
             hidden

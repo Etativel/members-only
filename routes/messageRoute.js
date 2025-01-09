@@ -4,6 +4,6 @@ const messageController = require("../controllers/messageController");
 router.use(express.urlencoded({ extended: true }));
 
 // router.get("/sending-message", messageController.signUpForm);
-router.post("/sending-message", messageController.addMessage);
+router.post("/", messageController.addMessage);
 
 module.exports = router;
