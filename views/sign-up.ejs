@@ -1,47 +1,72 @@
-<form action="/sign-up" method="POST">
-  <input
-    type="text"
-    placeholder="first name"
-    name="first_name"
-    value="<%= value.first_name %>"
-  />
-  <input
-    type="text"
-    placeholder="last name"
-    name="last_name"
-    value="<%= value.last_name %>"
-  />
-  <input
-    type="text"
-    placeholder="username"
-    name="username"
-    required
-    value="<%= value.username %>"
-  />
-  <input
-    type="email"
-    placeholder="email"
-    name="email"
-    value="<%= value.email %>"
-  />
-  <input
-    type="password"
-    placeholder="password"
-    name="password"
-    value="<%= value.password %>"
-  />
-  <input
-    type="text"
-    placeholder="member code"
-    name="member_code"
-    value="<%= value.member_code %>"
-  />
-  <input
-    type="text"
-    placeholder="admin code"
-    name="admin_code"
-    value="<%= value.admin_code %>"
-  />
-  <button type="submit">Sing-Up</button>
-  <%- include("./partials/errors.ejs") %>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up</title>
+    <link rel="stylesheet" href="/signup-form.css" />
+  </head>
+  <body>
+    <form action="/sign-up" method="POST" class="sign-up-form">
+      <label for="firstName">First Name</label>
+      <input
+        id="firstName"
+        type="text"
+        placeholder="Enter your first name"
+        name="first_name"
+        value="<%= value.first_name %>"
+      />
+      <label for="lastName">Last Name</label>
+      <input
+        id="lastName"
+        type="text"
+        placeholder="Enter your last name"
+        name="last_name"
+        value="<%= value.last_name %>"
+      />
+      <label for="admin_code">Username</label>
+      <input
+        id="username"
+        type="text"
+        placeholder="Enter your username"
+        name="username"
+        required
+        value="<%= value.username %>"
+      />
+      <label for="admin_code">Email Address</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="Enter your email address"
+        name="email"
+        value="<%= value.email %>"
+      />
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter your password"
+        name="password"
+        value="<%= value.password %>"
+      />
+      <label for="member_code">Member code</label>
+      <input
+        id="member_code"
+        type="text"
+        placeholder="Enter your member code"
+        name="member_code"
+        value="<%= value.member_code %>"
+      />
+      <label for="admin_code">Admin code</label>
+      <input
+        id="admin_code"
+        type="text"
+        placeholder="Enter your admin code"
+        name="admin_code"
+        value="<%= value.admin_code %>"
+      />
+      <button type="submit">Sing-Up</button>
+      <%- include("./partials/errors.ejs") %>
+    </form>
+  </body>
+</html>
