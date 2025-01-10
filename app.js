@@ -24,14 +24,11 @@ app.use("/", signUpRouter);
 app.use("/", logInRouter);
 app.use("/", chatRouter);
 app.use("/", chatRoomRouter);
-app.get("/", async (req, res) => {
-  try {
-    const messages = await messageDb.getAllMessage();
-    res.render("index", { user: req.user, messages });
-  } catch (error) {
-    console.error("Error fetching messages:", error);
-    res.status(500).send("An error occurred while loading messages.");
+app.get("/", (req, res) => {
+  if (!req.user) {
+    return res.render("index");
   }
+  res.redirect("/chat-room");
 });
 
 const PORT = 3000;

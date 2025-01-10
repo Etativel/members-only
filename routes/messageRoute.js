@@ -3,7 +3,6 @@ const router = express();
 const messageController = require("../controllers/messageController");
 router.use(express.urlencoded({ extended: true }));
 
-// router.get("/sending-message", messageController.signUpForm);
-router.post("/", messageController.addMessage);
-
+router.post("/chat-room", messageController.addMessage);
+router.post("/delete/:id", messageController.deleteMessage);
 module.exports = router;

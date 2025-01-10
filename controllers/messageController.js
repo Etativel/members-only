@@ -1,5 +1,3 @@
-const pool = require("../database/pool");
-const bcrypt = require("bcryptjs");
 const db = require("../database/messagesQuery");
 
 async function addMessage(req, res) {
@@ -14,6 +12,13 @@ async function addMessage(req, res) {
   }
 }
 
+async function deleteMessage(req, res) {
+  const { id } = req.params;
+  await db.deleteMessageQuery(id);
+  res.redirect("/chat-room");
+}
+
 module.exports = {
   addMessage,
+  deleteMessage,
 };

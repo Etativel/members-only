@@ -13,7 +13,7 @@
       <div class="message-input-container">
         <div class="message-container">
           <% messages.forEach(message => { %>
-          <span>Anonymous: <%= message.message %></span>
+          <span><%= message.username %>: <%= message.message %></span>
           <% }) %>
         </div>
         <form action="/chat-room" method="POST">

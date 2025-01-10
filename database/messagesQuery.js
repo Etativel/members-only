@@ -23,7 +23,19 @@ async function insertMessageQuery(params) {
   );
 }
 
+// DELETE MESSAGE
+
+async function deleteMessageQuery(params) {
+  await pool.query(
+    `
+      DELETE FROM messages WHERE id = $1
+    `,
+    [params]
+  );
+}
+
 module.exports = {
   insertMessageQuery,
   getAllMessage,
+  deleteMessageQuery,
 };

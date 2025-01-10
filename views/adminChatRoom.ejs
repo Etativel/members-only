@@ -13,7 +13,12 @@
       <div class="message-input-container">
         <div class="message-container">
           <% messages.forEach(message => { %>
-          <span>Anonymous: <%= message.message %></span>
+          <span
+            ><%= message.username %>: <%= message.message %>
+            <form action="/delete/<%= message.id %>" method="POST">
+              <button type="submit">Delete</button>
+            </form></span
+          >
           <% }) %>
         </div>
         <form action="/chat-room" method="POST">
