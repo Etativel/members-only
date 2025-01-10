@@ -4,11 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat</title>
+    <link rel="stylesheet" href="/chat.css" />
   </head>
   <body>
+    <h1>WELCOME BACK <%= user.username %></h1>
+    <a href="/log-out">LOG OUT</a>
     <div class="chat-container">
       <div class="message-input-container">
-        <form action="/chat-room">
+        <div class="message-container">
+          <% messages.forEach(message => { %>
+          <span><%= message.username %>: <%= message.message %></span>
+          <% }) %>
+        </div>
+        <form action="/" method="POST">
+          <input
+            type="text"
+            hidden
+            value="<%-user.username%>"
+            name="username"
+          />
           <input
             type="text"
             name="message"

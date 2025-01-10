@@ -52,8 +52,8 @@ router.get("/log-in", controller.getLoginForm);
 router.post(
   "/log-in",
   passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/",
+    successRedirect: "/chat-room",
+    failureRedirect: "/log-in",
   })
 );
 router.get("/log-out", (req, res, next) => {

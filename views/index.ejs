@@ -4,46 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat</title>
-    <link rel="stylesheet" href="/chat.css" />
   </head>
   <body>
-    <% if (locals.user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
-    <div class="chat-container">
-      <div class="message-input-container">
-        <div class="message-container">
-          <% messages.forEach(message => { %>
-          <span><%= message.username %>: <%= message.message %></span>
-          <% }) %>
-        </div>
-        <form action="/" method="POST">
-          <input
-            type="text"
-            hidden
-            value="<%-user.username%>"
-            name="username"
-          />
-          <input
-            type="text"
-            name="message"
-            id="message"
-            placeholder="Add a message..."
-          />
-          <button type="submit">></button>
-        </form>
-      </div>
-    </div>
-    <% } else { %>
-    <h1>please log in</h1>
-    <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input id="username" name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <button>Log In</button>
-    </form>
-    <%}%>
-    <!-- home <button><a href="/sign-up">sign-up</a></button> -->
+    <h1>Have Account ?</h1>
+    <button><a href="/log-in">Log-In</a></button>
+
+    <h2>Create Account</h2>
+    <button><a href="/sign-up">Sign-Up</a></button>
   </body>
 </html>

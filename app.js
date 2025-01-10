@@ -5,11 +5,11 @@ const passport = require("passport");
 const path = require("node:path");
 const assetPath = path.join(__dirname, "public");
 const signUpRouter = require("./routes/signUpRoute");
-const logInRouter = require("./routes/authRoute");
+const logInRouter = require("./routes/loginRoute");
 const chatRouter = require("./routes/messageRoute");
 const session = require("./config/sessionConfig");
 const messageDb = require("./database/messagesQuery");
-
+const chatRoomRouter = require("./routes/chatRoom");
 session(app);
 
 app.use(express.static(assetPath));
@@ -23,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", signUpRouter);
 app.use("/", logInRouter);
 app.use("/", chatRouter);
+app.use("/", chatRoomRouter);
 app.get("/", async (req, res) => {
   try {
     const messages = await messageDb.getAllMessage();
