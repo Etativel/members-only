@@ -6,11 +6,17 @@
     <title>Admin Chat | Chatter</title>
     <link rel="shortcut icon" href="/icons/chat.png" type="image/x-icon" />
     <link rel="stylesheet" href="/chat.css" />
+    <style>
+      #message::placeholder {
+        color: #ddd;
+        opacity: 0.8;
+      }
+    </style>
   </head>
   <body>
     <div class="chat-container">
       <header>
-        <h1>Welcome Back <%= user.username %></h1>
+        <h1>Chat Room</h1>
         <a href="/log-out">LOG OUT</a>
       </header>
       <div class="small-container">
@@ -37,18 +43,38 @@
           <form action="/chat-room" method="POST" class="input-form">
             <input
               type="text"
-              hidden
-              value="<%- user.username %>"
-              name="username"
-            />
-            <input
-              type="text"
               name="message"
               id="message"
               required
-              placeholder="Add a message..."
+              placeholder="You need to become a member to start chatting"
+              disabled
+              style="
+                padding: 10px;
+                font-size: 14px;
+                color: white;
+                border-radius: 4px;
+                width: 250px;
+                opacity: 1;
+                background-color: #333;
+              "
             />
-            <button type="submit" class="changecolor">Send</button>
+
+            <button
+              type="submit"
+              class="changecolor"
+              disabled
+              style="
+                padding: 10px 15px;
+                background-color: #ccc;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: not-allowed;
+                pointer-events: none;
+              "
+            >
+              Send
+            </button>
           </form>
         </footer>
       </div>
