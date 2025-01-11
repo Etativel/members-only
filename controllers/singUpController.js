@@ -4,6 +4,29 @@ const db = require("../database/userQuery");
 
 const { body, validationResult } = require("express-validator");
 
+const profileColors = [
+  "#FF6F61",
+  "#FFD700",
+  "#FFB74D",
+  "#4CAF50",
+  "#64B5F6",
+  "#FF4081",
+  "#BA68C8",
+  "#FFF176",
+  "#81D4FA",
+  "#AED581",
+  "#F06292",
+  "#7986CB",
+  "#FFD54F",
+  "#DCE775",
+  "#FFAB91",
+  "#B2FF59",
+  "#69F0AE",
+  "#F8BBD0",
+  "#FF8A65",
+  "#E1BEE7",
+];
+
 async function signUpForm(req, res) {
   res.render("sign-up", {
     errors: [],
