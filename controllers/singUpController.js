@@ -27,6 +27,11 @@ const profileColors = [
   "#E1BEE7",
 ];
 
+async function getRandomColor() {
+  const index = Math.floor(Math.random() * profileColors.length);
+  return profileColors[index];
+}
+
 async function signUpForm(req, res) {
   res.render("sign-up", {
     errors: [],
@@ -176,22 +181,29 @@ const usersCreatePost = [
     console.log(isAdminValid);
     console.log(isAdminValid);
     const hashedPassword = await bcrypt.hash(password, 10);
-
+    const randomColor = await getRandomColor();
     await db.createUser({
       first_name,
       last_name,
-      username,
+      username: username.toLowerCase(),
       email,
       password: hashedPassword,
       is_member: isMemberValid,
       is_admin: isAdminValid,
+      profile_color: randomColor,
     });
-    console.log(member_code);
+    console.log(getRandomColor);
     res.render("index");
   },
 ];
 
+async function testing(req, res) {
+  const color = await getRandomColor();
+  res.send(color);
+}
+
 module.exports = {
+  testing,
   signUpForm,
   usersCreatePost,
 };

@@ -26,8 +26,8 @@ async function getUsername(username) {
 async function createUser(params) {
   await pool.query(
     `
-            INSERT INTO users (first_name, last_name, username, email, password, is_member, is_admin) VALUES
-            ($1, $2, $3, $4, $5, $6, $7)
+            INSERT INTO users (first_name, last_name, username, email, password, is_member, is_admin, profile_color) VALUES
+            ($1, $2, $3, $4, $5, $6, $7, $8)
         `,
     [
       params.first_name,
@@ -37,6 +37,7 @@ async function createUser(params) {
       params.password,
       params.is_member,
       params.is_admin,
+      params.profile_color,
     ]
   );
 }

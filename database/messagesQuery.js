@@ -4,8 +4,7 @@ const pool = require("./pool");
 
 async function getAllMessage() {
   const { rows } = await pool.query(`
-            SELECT * FROM messages
-        
+            SELECT messages.*, users.profile_color as profile_color, users.is_admin as is_admin, users.is_member as is_member FROM messages LEFT JOIN users ON messages.username = users.username ORDER BY created_at
         `);
 
   return rows;

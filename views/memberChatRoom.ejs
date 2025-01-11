@@ -3,35 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat</title>
+    <title>Admin Chat | Chatter</title>
+    <link rel="shortcut icon" href="/icons/chat.png" type="image/x-icon" />
     <link rel="stylesheet" href="/chat.css" />
   </head>
   <body>
-    <h1>Welcome Back <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
     <div class="chat-container">
-      <div class="message-input-container">
-        <div class="message-container">
+      <header>
+        <h1>Welcome Back <%= user.username %></h1>
+        <a href="/log-out">LOG OUT</a>
+      </header>
+      <div class="small-container">
+        <main class="message-container" id="messageContainer">
           <% messages.forEach(message => { %>
-          <span><%= message.username %>: <%= message.message %></span>
+          <div
+            class="message <%= message.profile_color%>"
+            style="border-left: 4px solid <%= message.profile_color %>"
+          >
+            <p class="user-name-container">
+              <strong
+                class="username"
+                style="color: <%= message.profile_color %>"
+              >
+                <%= message.username %> <% if (message.is_admin) { %>
+                <img src="/icons/protection (3).png" class="admin-icon" />
+                <% } else { %>
+                <img src="/icons/member.png" class="member-icon" />
+                <% } %>:
+              </strong>
+            </p>
+
+            <p class="chat-msg-container"><%= message.message %></p>
+          </div>
           <% }) %>
-        </div>
-        <form action="/chat-room" method="POST">
-          <input
-            type="text"
-            hidden
-            value="<%-user.username%>"
-            name="username"
-          />
-          <input
-            type="text"
-            name="message"
-            id="message"
-            placeholder="Add a message..."
-          />
-          <button type="submit">></button>
-        </form>
+        </main>
+        <footer>
+          <form action="/chat-room" method="POST" class="input-form">
+            <input
+              type="text"
+              hidden
+              value="<%- user.username %>"
+              name="username"
+            />
+            <input
+              type="text"
+              name="message"
+              id="message"
+              required
+              placeholder="Add a message..."
+            />
+            <button type="submit" class="changecolor">Send</button>
+          </form>
+        </footer>
       </div>
     </div>
+    <script>
+      function scrollToBottom() {
+        const messageContainer = document.getElementById("messageContainer");
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+      }
+
+      window.onload = scrollToBottom;
+
+      const observer = new MutationObserver(scrollToBottom);
+      observer.observe(document.getElementById("messageContainer"), {
+        childList: true,
+      });
+    </script>
   </body>
 </html>

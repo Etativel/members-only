@@ -4,20 +4,26 @@ const messageDb = require("../database/messagesQuery");
 router.use(express.urlencoded({ extended: true }));
 
 function roleBasedRedirect(req, res, next) {
+  if (!req.user) {
+    console.log(req.user);
+    return res.redirect("/");
+  }
   if (req.user.is_admin) {
     res.locals.view = "adminChatRoom";
   } else if (req.user.is_member) {
     res.locals.view = "memberChatRoom";
   } else {
-    res.locals.view = "chatRoom";
+    res.locals.view = "guestChatRoom";
   }
   next();
 }
 
 router.get("/chat-room", roleBasedRedirect, async (req, res) => {
-  if (!req.user) {
-    return res.redirect("/");
-  }
+  // console.log(req.user);
+  // if (!req.user) {
+  //   console.log(req.user);
+  //   return res.redirect("/");
+  // }
   try {
     console.log(req.user);
     const messages = await messageDb.getAllMessage();
