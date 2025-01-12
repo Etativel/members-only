@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Chat | Chatter</title>
+    <title>Member Chat | Chatter</title>
     <link rel="shortcut icon" href="/icons/chat.png" type="image/x-icon" />
     <link rel="stylesheet" href="/chat.css" />
   </head>
@@ -50,6 +50,7 @@
               name="message"
               id="message"
               required
+              class="input-focus"
               placeholder="Add a message..."
             />
             <button type="submit" class="changecolor">Send</button>
@@ -61,6 +62,7 @@
       function scrollToBottom() {
         const messageContainer = document.getElementById("messageContainer");
         messageContainer.scrollTop = messageContainer.scrollHeight;
+        document.querySelector(".input-focus").focus();
       }
 
       window.onload = scrollToBottom;
