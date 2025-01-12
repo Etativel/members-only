@@ -18,17 +18,26 @@
         required
         value="<%= value.username %>"
       />
-
+      <% if (value.usernameError) { %>
+      <div class="error-message">
+        <p><%= value.usernameError %></p>
+      </div>
+      <% } %>
       <label for="password">Password</label>
       <input
         id="password"
         type="password"
         placeholder="Enter your password"
         name="password"
+        required
         value="<%= value.password %>"
       />
+      <% if (value.passwordError) { %>
+      <div class="error-message">
+        <p><%= value.passwordError %></p>
+      </div>
+      <% } %>
       <button type="submit">Log-In</button>
-      <%- include("./partials/errors.ejs") %>
     </form>
   </body>
 </html>

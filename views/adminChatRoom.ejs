@@ -3,14 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Chat | Chatter</title>
+    <title>Admin Chat | ChatterBox</title>
     <link rel="stylesheet" href="/chat.css" />
+    <link rel="shortcut icon" href="/icons/chat.png" type="image/x-icon" />
   </head>
   <body>
     <div class="chat-container">
       <header>
-        <h1>Welcome Back <%= user.username %></h1>
-        <a href="/log-out">LOG OUT</a>
+        <div class="header-container">
+          <h3 class="web-head-icon">ChatterBox</h3>
+          <div class="profile-ctr">
+            <button>H</button>
+            <a href="/log-out">LOG OUT</a>
+          </div>
+        </div>
+        <!-- <h1>Welcome Back <%= user.username %></h1> -->
       </header>
       <div class="small-container">
         <main class="message-container" id="messageContainer">
@@ -29,7 +36,7 @@
           groupedMessages[dateKey] = []; groupedMessages[dateKey].push(message);
           }); for (const dateGroup in groupedMessages) { %>
           <div class="date-group">
-            <h3 class="date-header"><%= dateGroup %></h3>
+            <p class="date-header"><%= dateGroup %></p>
             <% groupedMessages[dateGroup].forEach((message) => { %>
             <div
               class="message <%= message.profile_color %>"

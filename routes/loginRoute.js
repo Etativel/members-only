@@ -18,7 +18,7 @@ passport.use(
       const user = rows[0];
 
       if (!user) {
-        return done(null, false, { message: "Incorrect username" });
+        return done(null, false, { message: "No username found" });
       }
       const match = await bcrypt.compare(password, user.password);
       if (!match) {
@@ -54,6 +54,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/chat-room",
     failureRedirect: "/log-in",
+    failureFlash: true,
   })
 );
 router.get("/log-out", (req, res, next) => {
@@ -63,14 +64,6 @@ router.get("/log-out", (req, res, next) => {
     }
     res.redirect("/");
   });
-});
-
-router.get("/protected-route", isAuth, (req, res, next) => {
-  res.render("../views/index", { user: req.user });
-});
-
-router.get("/admin-route", isAdmin, (req, res, next) => {
-  res.render("../views/index", { user: req.user });
 });
 
 module.exports = router;

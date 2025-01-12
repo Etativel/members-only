@@ -5,7 +5,6 @@ router.use(express.urlencoded({ extended: true }));
 
 function roleBasedRedirect(req, res, next) {
   if (!req.user) {
-    console.log("User is a guest.");
     req.user = {
       username: "Guest",
       is_guest: true,

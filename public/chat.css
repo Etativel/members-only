@@ -4,6 +4,40 @@
   box-sizing: border-box;
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 12px 12px;
+}
+
+.web-head-icon {
+  animation: textcolorchange 10s infinite;
+  transition: transform 0.3s ease;
+}
+
+.web-head-icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+header {
+  padding: 10px;
+  background-color: #18181b;
+  color: white;
+  text-align: center;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+header a {
+  color: lightblue;
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+  margin-top: 5px;
+  /* border-bottom: gray 1px solid; */
+}
+
 body {
   height: 100vh;
   display: flex;
@@ -33,24 +67,6 @@ body {
   overflow: hidden;
 }
 
-header {
-  padding: 10px;
-  background-color: #18181b;
-  color: white;
-  text-align: center;
-  flex-shrink: 0;
-  width: 100%;
-}
-
-header a {
-  color: lightblue;
-  text-decoration: none;
-  font-size: 1rem;
-  display: block;
-  margin-top: 5px;
-  /* border-bottom: gray 1px solid; */
-}
-
 .message-container {
   flex-grow: 1;
   overflow-y: auto;
@@ -61,11 +77,11 @@ header a {
 }
 
 .date-header {
-  /* background-color: red; */
   text-align: center;
   color: white;
   padding-top: 12px;
   padding-bottom: 12px;
+  opacity: 80%;
 }
 
 .message-time {
@@ -237,5 +253,29 @@ footer {
   100% {
     background: #7ad8f5;
     color: white;
+  }
+}
+
+@keyframes textcolorchange {
+  0% {
+    color: #7ad8f5;
+  }
+  16.67% {
+    color: #9342a6;
+  }
+  33.33% {
+    color: #aa1a13;
+  }
+  50% {
+    color: #fecf87;
+  }
+  66.67% {
+    color: #7ad8f5;
+  }
+  83.33% {
+    color: #aee77e;
+  }
+  100% {
+    color: #7ad8f5;
   }
 }
