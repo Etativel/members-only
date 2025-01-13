@@ -13,7 +13,7 @@ async function getLoginForm(req, res) {
   const passwordError =
     flashMessage === "Incorrect password" ? flashMessage : null;
 
-  res.render("log-in", {
+  res.render("./forms/log-in", {
     value: {
       username: null,
       password: null,

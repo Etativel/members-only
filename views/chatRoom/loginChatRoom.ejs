@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member Chat | ChatterBox</title>
+    <link rel="stylesheet" href="/chat.css" />
+    <link rel="shortcut icon" href="/icons/chat.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <header>
+        <div class="header-container">
+          <h3 class="web-head-icon">ChatterBox</h3>
+          <div class="profile-btn-ctr">
+            <button><a href="">Become a Member</a></button>
+            <a href="/log-out">Log Out</a>
+          </div>
+        </div>
+        <!-- <h1>Welcome Back <%= user.username %></h1> -->
+      </header>
+      <div class="small-container">
+        <main class="message-container" id="messageContainer">
+          <% const formatDate = (dateString) => { const now = new Date(); const
+          messageDate = new Date(dateString); const isToday =
+          messageDate.toDateString() === now.toDateString(); const isYesterday =
+          messageDate.toDateString() === new Date(now.setDate(now.getDate() -
+          1)).toDateString(); if (isToday) return "Today"; if (isYesterday)
+          return "Yesterday"; return messageDate.toLocaleDateString("en-GB", {
+          day: "2-digit", month: "short", year: "numeric" }); }; const
+          formatTime = (dateString) => { const messageDate = new
+          Date(dateString); return messageDate.toLocaleTimeString("en-GB", {
+          hour: "2-digit", minute: "2-digit" }); }; const groupedMessages = {};
+          messages.forEach((message) => { const dateKey =
+          formatDate(message.created_at); if (!groupedMessages[dateKey])
+          groupedMessages[dateKey] = []; groupedMessages[dateKey].push(message);
+          }); for (const dateGroup in groupedMessages) { %>
+          <div class="date-group">
+            <h3 class="date-header"><%= dateGroup %></h3>
+            <% groupedMessages[dateGroup].forEach((message) => { %>
+            <div
+              class="message <%= message.profile_color %>"
+              style="border-left: 4px solid <%= message.profile_color %>"
+            >
+              <p class="user-name-container">
+                <strong
+                  class="username"
+                  style="color: <%= message.profile_color %>"
+                >
+                  Anonymous
+                </strong>
+                <span class="message-time"
+                  ><%= formatTime(message.created_at) %></span
+                >
+              </p>
+              <div class="chat-msg-container"><%= message.message %></div>
+            </div>
+            <% }) %>
+          </div>
+          <% } %>
+        </main>
+        <footer>
+          <form action="/chat-room" method="POST" class="input-form">
+            <input
+              type="text"
+              hidden
+              value="<%- user.username %>"
+              name="username"
+            />
+            <input
+              type="text"
+              name="message"
+              id="message"
+              required
+              class="input-focus"
+              placeholder="Add a message..."
+            />
+            <button type="submit" class="changecolor">Send</button>
+          </form>
+        </footer>
+      </div>
+    </div>
+    <script>
+      function scrollToBottom() {
+        const messageContainer = document.getElementById("messageContainer");
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+        document.querySelector(".input-focus").focus();
+      }
+
+      window.onload = scrollToBottom;
+
+      const observer = new MutationObserver(scrollToBottom);
+      observer.observe(document.getElementById("messageContainer"), {
+        childList: true,
+      });
+    </script>
+  </body>
+</html>

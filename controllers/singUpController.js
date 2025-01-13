@@ -33,7 +33,7 @@ async function getRandomColor() {
 }
 
 async function signUpForm(req, res) {
-  res.render("sign-up", {
+  res.render("./forms/sign-up", {
     errors: [],
     value: {
       first_name: "",
@@ -153,7 +153,7 @@ const usersCreatePost = [
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).render("sign-up", {
+      return res.status(400).render("./forms/sign-up", {
         title: "Create user",
         errors: errors.array(),
         value: req.body,

@@ -14,13 +14,13 @@ function roleBasedRedirect(req, res, next) {
   }
 
   if (req.user.is_admin) {
-    res.locals.view = "adminChatRoom";
+    res.locals.view = "./chatRoom/adminChatRoom";
   } else if (req.user.is_member) {
-    res.locals.view = "memberChatRoom";
+    res.locals.view = "./chatRoom/memberChatRoom";
   } else if (req.user.is_guest) {
-    res.locals.view = "guestChatRoom";
+    res.locals.view = "./chatRoom/guestChatRoom";
   } else {
-    res.locals.view = "guestChatRoom";
+    res.locals.view = "./chatRoom/loginChatRoom";
   }
   next();
 }
