@@ -51,6 +51,14 @@ passport.deserializeUser(async (id, done) => {
 router.get("/log-in", controller.getLoginForm);
 router.post(
   "/log-in",
+  (req, res, next) => {
+    // Store form data in flash before authentication
+    req.flash("formData", {
+      username: req.body.username,
+      password: req.body.password,
+    });
+    next();
+  },
   passport.authenticate("local", {
     successRedirect: "/chat-room",
     failureRedirect: "/log-in",

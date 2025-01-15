@@ -120,7 +120,7 @@ input::placeholder {
   font-size: small;
   padding-left: 12px;
   /* padding-bottom: 12px; */
-  color: red;
+  color: #fecc00;
   opacity: 90%;
   transform: translateY(-40%);
 }

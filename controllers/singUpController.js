@@ -74,7 +74,7 @@ const passwordSpecialCharErr =
 const memberErr = "must be the valid member code: 111.";
 const adminErr = "must be the valid admin code: 888.";
 
-const uniqueEmailErr = "email already used";
+const uniqueEmailErr = "Email already used";
 
 const validateUser = [
   body("first_name")

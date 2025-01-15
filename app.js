@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
   if (!req.user) {
-    res.redirect("/log-in");
+    return res.redirect("/log-in");
   }
   res.redirect("/chat-room");
 });

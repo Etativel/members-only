@@ -13,10 +13,16 @@ async function getLoginForm(req, res) {
   const passwordError =
     flashMessage === "Incorrect password" ? flashMessage : null;
 
+  // get the data stored in the post request
+  const flashData = req.flash("formData")[0];
+  const value = flashData || { username: "", password: "" };
+
+  console.log(flashData);
+
   res.render("./forms/log-in", {
     value: {
-      username: null,
-      password: null,
+      username: value.username,
+      password: value.password,
       usernameError,
       passwordError,
     },
