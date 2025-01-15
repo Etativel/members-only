@@ -3,71 +3,135 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sing-Up</title>
+    <title>Sign-Up</title>
     <link rel="shortcut icon" href="/icons/chat.png" type="image/x-icon" />
     <link rel="stylesheet" href="/signup-form.css" />
   </head>
   <body>
-    <form action="/sign-up" method="POST" class="sign-up-form">
-      <label for="firstName">First Name</label>
-      <input
-        id="firstName"
-        type="text"
-        placeholder="Enter your first name"
-        name="first_name"
-        value="<%= value.first_name %>"
-      />
-      <label for="lastName">Last Name</label>
-      <input
-        id="lastName"
-        type="text"
-        placeholder="Enter your last name"
-        name="last_name"
-        value="<%= value.last_name %>"
-      />
-      <label for="username">Username</label>
-      <input
-        id="username"
-        type="text"
-        placeholder="Enter your username"
-        name="username"
-        required
-        value="<%= value.username %>"
-      />
-      <label for="email">Email Address</label>
-      <input
-        id="email"
-        type="email"
-        placeholder="Enter your email address"
-        name="email"
-        value="<%= value.email %>"
-      />
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        placeholder="Enter your password"
-        name="password"
-        value="<%= value.password %>"
-      />
-      <label for="member_code">Member code</label>
-      <input
-        id="member_code"
-        type="text"
-        placeholder="Enter your member code"
-        name="member_code"
-        value="<%= value.member_code %>"
-      />
-      <label for="admin_code">Admin code</label>
-      <input
-        id="admin_code"
-        type="text"
-        placeholder="Enter your admin code"
-        name="admin_code"
-        value="<%= value.admin_code %>"
-      />
-      <button type="submit">Sing-Up</button>
-      <%- include("../partials/errors.ejs") %>
-    </form>
+    <div class="sign-up-container">
+      <div class="top-part-signup">
+        <h1>Sign Up</h1>
+        <p class="sub-title">Sign up to continue</p>
+      </div>
+
+      <form action="/sign-up" method="POST" class="sign-up-form">
+        <!-- <label for="firstName">First Name</label> -->
+        <input
+          id="firstName"
+          required
+          type="text"
+          placeholder="First name"
+          name="first_name"
+          value="<%= value.first_name %>"
+        />
+        <% const first_name_error = errors .filter(e => e.path === "first_name")
+        .map(e => e.msg) .join(" "); %> <% if (first_name_error) { %>
+        <div class="error-message">
+          <p class="error"><%= first_name_error %></p>
+        </div>
+
+        <% } %>
+        <!-- <label for="lastName">Last Name</label> -->
+        <input
+          id="lastName"
+          type="text"
+          placeholder="Last name"
+          name="last_name"
+          value="<%= value.last_name %>"
+        />
+        <% const last_name_error = errors .filter(e => e.path === "last_name")
+        .map(e => e.msg) .join(" "); %> <% if (last_name_error) { %>
+        <div class="error-message">
+          <p class="error"><%= last_name_error %></p>
+        </div>
+
+        <% } %>
+        <!-- <label for="username">Username</label> -->
+        <input
+          id="username"
+          type="text"
+          placeholder="Username"
+          name="username"
+          required
+          value="<%= value.username %>"
+        />
+        <% const username_error = errors .filter(e => e.path === "username")
+        .map(e => e.msg) .join(" "); %> <% if (username_error) { %>
+        <div class="error-message">
+          <p class="error"><%= username_error %></p>
+        </div>
+
+        <% } %>
+        <!-- <label for="email">Email Address</label> -->
+        <input
+          id="email"
+          required
+          type="email"
+          placeholder="Email"
+          name="email"
+          value="<%= value.email %>"
+        />
+        <% const email_error = errors .filter(e => e.path === "email") .map(e =>
+        e.msg) .join(" "); %> <% if (email_error) { %>
+        <div class="error-message">
+          <p class="error"><%= email_error %></p>
+        </div>
+
+        <% } %>
+        <!-- <label for="password">Password</label> -->
+        <input
+          id="password"
+          type="password"
+          required
+          placeholder="Password"
+          name="password"
+          value="<%= value.password %>"
+        />
+        <% const passwordErrors = errors .filter(e => e.path === "password")
+        .map(e => e.msg) .join(" "); %> <% if (passwordErrors) { %>
+        <div class="error-message">
+          <p class="error"><%= passwordErrors %></p>
+        </div>
+
+        <% } %>
+        <!-- <label for="member_code">Member code</label> -->
+        <input
+          id="member_code"
+          type="text"
+          placeholder="Member code is 111"
+          name="member_code"
+          value="<%= value.member_code %>"
+        />
+        <% const member_code_error = errors .filter(e => e.path ===
+        "member_code") .map(e => e.msg) .join(" "); %> <% if (member_code_error)
+        { %>
+        <div class="error-message">
+          <p class="error"><%= member_code_error %></p>
+        </div>
+
+        <% } %>
+        <!-- <label for="admin_code">Admin code</label> -->
+        <input
+          id="admin_code"
+          type="text"
+          placeholder="Admin code is 888"
+          name="admin_code"
+          value="<%= value.admin_code %>"
+        />
+        <% const admin_code_error = errors .filter(e => e.path === "admin_code")
+        .map(e => e.msg) .join(" "); %> <% if (admin_code_error) { %>
+        <div class="error-message">
+          <p class="error"><%= admin_code_error %></p>
+        </div>
+
+        <% } %>
+        <div class="btn-container">
+          <button class="submit-btn changecolor" type="submit">Sign Up</button>
+        </div>
+      </form>
+      <p class="sign-up-info">
+        Already have an account? <a href="/log-in">Log In</a>
+      </p>
+    </div>
   </body>
 </html>

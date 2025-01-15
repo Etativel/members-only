@@ -98,6 +98,7 @@ button:hover {
 .sign-up-info {
   color: rgb(169, 169, 169);
   font-size: small;
+  text-align: center;
 }
 
 a {
@@ -108,6 +109,20 @@ a {
 input:focus {
   border-color: #38bdf8;
   outline: none;
+}
+
+input::placeholder {
+  color: #a9a9a9;
+  opacity: 1;
+}
+
+.error-message {
+  font-size: small;
+  padding-left: 12px;
+  /* padding-bottom: 12px; */
+  color: red;
+  opacity: 90%;
+  transform: translateY(-40%);
 }
 
 @keyframes textcolorchange {

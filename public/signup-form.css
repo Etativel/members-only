@@ -1,16 +1,44 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
   display: flex;
   justify-content: center;
+  /* align-items: center; */
+  height: fit-content;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: #000000;
 }
-.log-in-form,
+
 .sign-up-form {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  min-width: 400px;
+  height: fit-content;
+}
+
+h1 {
+  padding-bottom: 12px;
+}
+
+label {
+  padding-bottom: 12px;
 }
 
 input {
-  height: 32px;
+  height: 40px;
+  background-color: #18181b;
+  border: solid 2px;
+  animation: textcolorchange 30s infinite;
+  border-radius: 6px;
+  padding: 12px;
+  color: white;
+  margin-bottom: 12px;
 }
 
 label {
@@ -24,4 +52,141 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  justify-content: center;
+}
+
+.sign-up-container {
+  min-height: 620px;
+  max-height: fit-content;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px 24px;
+  border: solid 2px;
+  animation: textcolorchange 30s infinite;
+  border-radius: 12px;
+  background-color: #18181b;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.submit-btn {
+  width: 100px;
+  background-color: #18181b;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+}
+
+.top-part-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sub-title,
+.sign-up-info {
+  color: rgb(169, 169, 169);
+  font-size: small;
+  text-align: center;
+}
+
+a {
+  text-decoration: inherit;
+  color: #38bdf8;
+  cursor: pointer;
+}
+
+input:focus {
+  border-color: #38bdf8;
+  outline: none;
+}
+
+input::placeholder {
+  color: #a9a9a9;
+  opacity: 1;
+}
+
+.error-message {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+}
+
+.error-message {
+  font-size: small;
+  padding-left: 12px;
+  /* padding-bottom: 12px; */
+  color: red;
+  opacity: 90%;
+  /* transform: translateY(-40%); */
+  padding-bottom: 12px;
+}
+
+@keyframes textcolorchange {
+  0% {
+    border-color: #7ad8f5;
+  }
+  16.67% {
+    border-color: #9342a6;
+  }
+  33.33% {
+    border-color: #aa1a13;
+  }
+  50% {
+    border-color: #fecf87;
+  }
+  66.67% {
+    border-color: #7ad8f5;
+  }
+  83.33% {
+    border-color: #aee77e;
+  }
+  100% {
+    border-color: #7ad8f5;
+  }
+}
+
+.changecolor {
+  animation: colorchange 30s infinite;
+}
+
+@keyframes colorchange {
+  0% {
+    background: #7ad8f5;
+    color: #000;
+  }
+  16.67% {
+    background: #9342a6;
+    color: #fff;
+  }
+  33.33% {
+    background: #aa1a13;
+    color: #fff;
+  }
+  50% {
+    background: #fecf87;
+    color: #000;
+  }
+  66.67% {
+    background: #7ad8f5;
+    color: #000;
+  }
+  83.33% {
+    background: #aee77e;
+    color: #000;
+  }
+  100% {
+    background: #7ad8f5;
+    color: #000;
+  }
 }

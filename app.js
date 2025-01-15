@@ -6,7 +6,7 @@ const path = require("node:path");
 const assetPath = path.join(__dirname, "public");
 const signUpRouter = require("./routes/signUpRoute");
 const logInRouter = require("./routes/loginRoute");
-const chatRouter = require("./routes/messageRoute");
+const messageRouter = require("./routes/messageRoute");
 const session = require("./config/sessionConfig");
 const messageDb = require("./database/messagesQuery");
 const chatRoomRouter = require("./routes/chatRoom");
@@ -24,7 +24,7 @@ app.use(flash());
 
 app.use("/", signUpRouter);
 app.use("/", logInRouter);
-app.use("/", chatRouter);
+app.use("/", messageRouter);
 app.use("/", chatRoomRouter);
 app.use((req, res, next) => {
   res.locals.errorMessage = req.flash("error");
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
   if (!req.user) {
-    return res.render("index");
+    res.redirect("/log-in");
   }
   res.redirect("/chat-room");
 });

@@ -85,6 +85,7 @@ const validateUser = [
     .withMessage(`First name ${lengthErr}`),
 
   body("last_name")
+    .optional({ checkFalsy: true })
     .trim()
     .isAlpha()
     .withMessage(`Last name ${alphaErr}`)
@@ -152,6 +153,7 @@ const usersCreatePost = [
   validateUser,
   async (req, res) => {
     const errors = validationResult(req);
+    console.log(errors);
     if (!errors.isEmpty()) {
       return res.status(400).render("./forms/sign-up", {
         title: "Create user",
@@ -193,7 +195,8 @@ const usersCreatePost = [
       profile_color: randomColor,
     });
     console.log(getRandomColor);
-    res.render("index");
+    // res.render("index");
+    res.redirect("/log-in");
   },
 ];
 
