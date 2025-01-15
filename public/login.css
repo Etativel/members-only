@@ -1,0 +1,170 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000000;
+  /* overflow-y: hidden; */
+}
+.log-in-form {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  height: fit-content;
+  /* align-items: center; */
+}
+
+h1 {
+  padding-bottom: 12px;
+}
+
+label {
+  padding-bottom: 12px;
+}
+
+input {
+  height: 40px;
+  background-color: #18181b;
+  border: solid 2px;
+  animation: textcolorchange 30s infinite;
+  border-radius: 6px;
+  padding: 12px;
+  color: white;
+  margin-bottom: 12px;
+  /* width: 200px; */
+}
+
+label {
+  padding-top: 12px;
+}
+
+button {
+  padding: 12px 0px;
+  margin: 12px 0px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  margin-top: 32px;
+  justify-content: center;
+}
+
+.log-in-container {
+  height: 520px;
+  /* height: fit-content; */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  /* height: fit-content; */
+  padding: 24px 28px 24px;
+  border: solid 2px;
+  animation: textcolorchange 30s infinite;
+  border-radius: 12px;
+  background-color: #18181b;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.submit-btn {
+  /* margin-top: 64px; */
+  width: 100px;
+  background-color: #18181b;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+}
+
+.top-part-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sub-title,
+.sign-up-info {
+  color: rgb(169, 169, 169);
+  font-size: small;
+}
+
+a {
+  text-decoration: inherit;
+  color: #38bdf8;
+  cursor: pointer;
+}
+input:focus {
+  border-color: #38bdf8;
+  outline: none;
+}
+
+@keyframes textcolorchange {
+  0% {
+    border-color: #7ad8f5;
+  }
+  16.67% {
+    border-color: #9342a6;
+  }
+  33.33% {
+    border-color: #aa1a13;
+  }
+  50% {
+    border-color: #fecf87;
+  }
+  66.67% {
+    border-color: #7ad8f5;
+  }
+  83.33% {
+    border-color: #aee77e;
+  }
+  100% {
+    border-color: #7ad8f5;
+  }
+}
+
+.changecolor {
+  animation: colorchange 30s infinite;
+}
+
+@keyframes colorchange {
+  0% {
+    background: #7ad8f5;
+    color: #000; /* Contrasting color */
+  }
+  16.67% {
+    background: #9342a6;
+    color: #fff; /* Contrasting color */
+  }
+  33.33% {
+    background: #aa1a13;
+    color: #fff; /* Contrasting color */
+  }
+  50% {
+    background: #fecf87;
+    color: #000; /* Contrasting color */
+  }
+  66.67% {
+    background: #7ad8f5;
+    color: #000; /* Contrasting color */
+  }
+  83.33% {
+    background: #aee77e;
+    color: #000; /* Contrasting color */
+  }
+  100% {
+    background: #7ad8f5;
+    color: #000; /* Contrasting color */
+  }
+}
