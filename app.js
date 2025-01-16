@@ -10,6 +10,7 @@ const messageRouter = require("./routes/messageRoute");
 const session = require("./config/sessionConfig");
 const messageDb = require("./database/messagesQuery");
 const chatRoomRouter = require("./routes/chatRoom");
+const membershipRouter = require("./routes/membershipRoute");
 session(app);
 const flash = require("connect-flash");
 app.use(express.static(assetPath));
@@ -26,6 +27,7 @@ app.use("/", signUpRouter);
 app.use("/", logInRouter);
 app.use("/", messageRouter);
 app.use("/", chatRoomRouter);
+app.use("/", membershipRouter);
 app.use((req, res, next) => {
   res.locals.errorMessage = req.flash("error");
   next();

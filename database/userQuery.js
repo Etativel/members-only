@@ -42,8 +42,22 @@ async function createUser(params) {
   );
 }
 
+// UPDATE
+
+async function updateMembershipQuery(params) {
+  await pool.query(
+    `
+      UPDATE users
+      SET is_member = $1
+      WHERE username = $2
+    `,
+    [params.is_member, params.username]
+  );
+}
+
 module.exports = {
   getUsername,
   getEmail,
   createUser,
+  updateMembershipQuery,
 };

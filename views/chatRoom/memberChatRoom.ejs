@@ -10,8 +10,15 @@
   <body>
     <div class="chat-container">
       <header>
-        <h1>Welcome Back <%= user.username %></h1>
-        <a href="/log-out">LOG OUT</a>
+        <div class="header-container">
+          <h3 class="web-head-icon">ChatterBox</h3>
+          <div class="profile-ctr">
+            <button class="header-btn">
+              <a class="head-text" href="/log-out">LOG OUT</a>
+            </button>
+          </div>
+        </div>
+        <!-- <h1>Welcome Back <%= user.username %></h1> -->
       </header>
       <div class="small-container">
         <main class="message-container" id="messageContainer">
@@ -43,8 +50,10 @@
                 >
                   <%= message.username %> <% if (message.is_admin) { %>
                   <img src="/icons/protection (3).png" class="admin-icon" />
-                  <% } else { %>
+                  <% } else if (message.is_member) { %>
                   <img src="/icons/member.png" class="member-icon" />
+                  <% } else { %>
+                  <!-- Render an empty string if neither condition is met -->
                   <% } %>
                 </strong>
                 <span class="message-time"

@@ -61,7 +61,7 @@ async function isUsernameTaken(username) {
 const alphaErr = "must only contain letters.";
 const lengthErr = "must be between 1 and 10 characters.";
 const uniqueErr = "username already taken";
-const emailErr = "must be a valid email address.";
+const emailErr = "Email must be a valid email address.";
 const passwordLengthErr = "Password must be at least 8 characters long.";
 const passwordLowercaseErr =
   "Password must include at least one lowercase letter.";
@@ -71,30 +71,30 @@ const passwordNumberErr = "Password must include at least one number.";
 const passwordSpecialCharErr =
   "Password must include at least one special character.";
 
-const memberErr = "must be the valid member code: 111.";
-const adminErr = "must be the valid admin code: 888.";
+const memberErr = "must be the valid member code. Hint: 111.";
+const adminErr = "must be the valid admin code. Hint: 888.";
 
 const uniqueEmailErr = "Email already used";
 
 const validateUser = [
   body("first_name")
     .trim()
-    .isAlpha()
+    .matches(/^[a-zA-Z\s]+$/)
     .withMessage(`First name ${alphaErr}`)
-    .isLength({ min: 1, max: 10 })
+    .isLength({ min: 1, max: 30 })
     .withMessage(`First name ${lengthErr}`),
 
   body("last_name")
     .optional({ checkFalsy: true })
     .trim()
-    .isAlpha()
+    .matches(/^[a-zA-Z\s]+$/)
     .withMessage(`Last name ${alphaErr}`)
-    .isLength({ min: 1, max: 10 })
+    .isLength({ min: 1, max: 30 })
     .withMessage(`Last name ${lengthErr}`),
 
   body("username")
     .trim()
-    .isLength({ min: 3, max: 10 })
+    .isLength({ min: 3, max: 15 })
     .withMessage(`Username ${lengthErr}`)
     .custom(async (value) => {
       const taken = await isUsernameTaken(value);

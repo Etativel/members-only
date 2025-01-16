@@ -13,6 +13,8 @@
 .web-head-icon {
   animation: textcolorchange 10s infinite;
   transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
 .web-head-icon:hover {
@@ -34,7 +36,7 @@ header a {
   text-decoration: none;
   font-size: 1rem;
   display: block;
-  margin-top: 5px;
+  /* margin-top: 5px; */
   /* border-bottom: gray 1px solid; */
 }
 
@@ -261,10 +263,10 @@ footer {
     color: #7ad8f5;
   }
   16.67% {
-    color: #9342a6;
+    color: #fbf5dd;
   }
   33.33% {
-    color: #aa1a13;
+    color: #b1f0f7;
   }
   50% {
     color: #fecf87;
@@ -278,4 +280,35 @@ footer {
   100% {
     color: #7ad8f5;
   }
+}
+
+.header-btn {
+  /* padding: 6px 12px 6px; */
+  border: solid 2px transparent;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.header-btn a {
+  animation: textcolorchange 10s infinite;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.header-btn:hover a {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.head-text {
+  padding: 0px;
+}
+
+.profile-btn-ctr {
+  display: flex;
+}
+
+.become-member-text {
+  padding-right: 24px;
 }

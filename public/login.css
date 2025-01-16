@@ -87,6 +87,10 @@ button:hover {
   font-weight: bold;
 }
 
+.submit-btn:hover {
+  filter: brightness(0.9);
+}
+
 .top-part-login {
   display: flex;
   flex-direction: column;

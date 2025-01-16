@@ -80,10 +80,15 @@ button:hover {
 .submit-btn {
   width: 100px;
   background-color: #18181b;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 6px;
   color: white;
   font-weight: bold;
+  animation: colorchange 30s infinite;
+}
+
+.submit-btn:hover {
+  filter: brightness(0.9);
 }
 
 .top-part-signup {
@@ -156,10 +161,6 @@ input::placeholder {
   }
 }
 
-.changecolor {
-  animation: colorchange 30s infinite;
-}
-
 @keyframes colorchange {
   0% {
     background: #7ad8f5;
@@ -188,5 +189,29 @@ input::placeholder {
   100% {
     background: #7ad8f5;
     color: #000;
+  }
+}
+
+@keyframes border-colorchange {
+  0% {
+    border-color: #7ad8f5;
+  }
+  16.67% {
+    border-color: #9342a6;
+  }
+  33.33% {
+    border-color: #aa1a13;
+  }
+  50% {
+    border-color: #fecf87;
+  }
+  66.67% {
+    border-color: #7ad8f5;
+  }
+  83.33% {
+    border-color: #aee77e;
+  }
+  100% {
+    border-color: #7ad8f5;
   }
 }

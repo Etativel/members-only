@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log-In | ChatterBox</title>
+    <link rel="shortcut icon" href="/icons/chat.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/login.css" />
+  </head>
+  <body>
+    <div class="log-in-container">
+      <div class="top-part-login">
+        <h1>Membership</h1>
+        <p class="sub-title">
+          Please enter your membership code to become a member
+        </p>
+      </div>
+
+      <form action="/membership-code" method="POST" class="log-in-form">
+        <!-- <label for="username">Username</label> -->
+        <input type="text" name="username" hidden value="<%value.username%>" />
+        <input
+          id="membership-code"
+          type="text"
+          placeholder="Enter your membership code"
+          name="member_code"
+          required
+        />
+        <% const member_code_error = errors .filter(e => e.path ===
+        "member_code") .map(e => e.msg) .join(" "); %> <% if (member_code_error)
+        { %>
+        <div class="error-message">
+          <p class="error"><%= member_code_error %></p>
+        </div>
+
+        <% } %>
+        <div class="btn-container">
+          <button class="submit-btn changecolor" type="submit">Validate</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
