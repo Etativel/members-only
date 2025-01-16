@@ -10,9 +10,10 @@ const isAdmin = require("../middlewares/authMiddleware").isAdmin;
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
+      const normalizedUsername = username.toLowerCase();
       const { rows } = await pool.query(
         "SELECT * FROM users WHERE username = $1",
-        [username]
+        [normalizedUsername]
       );
 
       const user = rows[0];
